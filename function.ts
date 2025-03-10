@@ -41,3 +41,52 @@ function getMessage(name: string) {
 }
 
 console.log(getMessage("Andi"));
+
+// closure function
+function greeting(name: string) {
+  const defaulMessage = "Hello, ";
+
+  return function () {
+    return defaulMessage + name;
+  };
+}
+
+const greetingDavid = greeting("David");
+console.log(greetingDavid());
+
+// currying
+function multiplier(factor: number) {
+  return function (num: number) {
+    return factor * num;
+  };
+}
+
+const mul4 = multiplier(4);
+const mul5 = multiplier(5);
+
+console.log(mul4(3));
+console.log(mul4(5));
+console.log(mul5(2));
+
+// reccursive function
+function countDown(fromNumber: number) {
+  console.log(fromNumber); // 1
+
+  let nextNumber = fromNumber - 1; // 0
+
+  if (nextNumber > 0) {
+    countDown(nextNumber);
+  }
+}
+
+countDown(5);
+
+// arrow function
+const sum = (a: number, b: number) => a + b;
+console.log(sum(10, 2));
+
+const count: number = 1 / 0; // Infinity
+console.log(isFinite(count));
+
+const count2: number = Number("10a"); // Na
+console.log(isNaN(count2));
